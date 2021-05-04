@@ -1,0 +1,129 @@
+from random import *
+
+print('welcome to my first login system')
+
+while True: 
+    username = input('username: ')
+    password = input('password: ')
+
+    if username == 'regand7' and password == '123' :
+        break
+    else:
+        print('invalid username / password')
+
+player_score = 0
+computer_score = 0
+
+player_points = 0
+computer_points = 0
+
+all_results = []
+
+while True:
+    print("")
+    print("1) Rock, Paper & Scissor")
+    print("2) Current score")
+    print("3) Current winner")
+    print("4) Current Points")
+    print("5) Display all winners")
+    print("0) Exit")
+    
+    menu_choice = input("Choice: ")
+  
+    if menu_choice == "1":
+      for number_rounds in range(3):
+          random_number = random()
+        
+        if random_number <= 0.33:
+            computer_move = "Rock"
+        elif random_number <= 0.66:
+            computer_move = "Paper"
+        else:
+            computer_move = "Scissor"
+        
+        print("")    
+        print("1) Rock")
+        print("2) Paper")
+        print("3) Scissor")
+        
+        number = input("What would you like to play? ")
+        
+        if number == "1":
+            player_move = "Rock"
+        elif number == "2":
+            player_move = "Paper"
+        elif number == "3":
+            player_move = "Scissor"
+            
+        if player_move == "Rock" and computer_move == "Scissor":
+            print("You win with Rock against Scissor")
+            all_results.append("You win with Rock against Scissor")
+            player_score = player_score + 1
+            player_points = player_points + 3
+        elif player_move == "Rock" and computer_move == "Paper":
+            print("Computer wins with Paper against Rock")
+            all_results.append("Computer wins with Paper against Rock")
+            computer_score = computer_score + 1
+            computer_points = computer_points + 3
+        elif player_move == "Rock" and computer_move == "Rock":
+            print("Draw! Rock against Rock")
+            all_results.append("Draw! Rock against Rock")
+            computer_score = computer_score + 1
+            player_score = player_score + 1 
+            computer_points = computer_points + 1
+            player_points = player_points + 1 
+        elif player_move == "Paper" and computer_move == "Rock":
+            print("You win with Paper against Rock")
+            all_results.append("You win with Paper against Rock")
+            player_score = player_score + 1
+            player_points = player_points + 3
+        elif player_move == "Paper" and computer_move == "Paper":
+            print("Draw! paper against Paper")
+            all_results.append("Draw! paper against Paper")
+            computer_score = computer_score + 1
+            player_score = player_score + 1
+            computer_points = computer_points + 1
+            player_points = player_points + 1 
+        elif player_move == "Paper" and computer_move == "Scissor":
+            print("Computer wins with Scissor against Paper")
+            all_results.append("Computer wins with Rock against Scissor")
+            computer_score = computer_score + 1
+            computer_points = computer_points + 3
+        elif player_move == "Scissor" and computer_move == "Rock":
+            print("Computer wins with Rock against Scissor")
+            all_results.append("Computer wins with Rock against Scissor")
+            computer_score = computer_score + 1
+            computer_points = computer_points + 3
+        elif player_move == "Scissor" and computer_move == "Paper":
+            print("You wins with Scissor against Paper")
+            player_score = player_score + 1
+            player_points = player_points + 3
+        elif player_move == "Scissor" and computer_move == "Scissor":
+            print("Draw! Scissor against Scissor")
+            all_results.append("Draw! Scissor against Scissor")
+            computer_score = computer_score + 1
+            player_score = player_score + 1
+            computer_points = computer_points + 1
+            player_points = player_points + 1 
+
+    elif menu_choice == "2":
+        print("Player: " + str(player_score) + " : Computer: " + str(computer_score))
+
+    elif menu_choice == "3":
+        if player_score > computer_score:
+          print("Player is currently winning")
+        elif computer_score > player_score:
+          print("Computer is currently winning")
+        else:
+          print("Currently a draw")
+
+    elif menu_choice == "4":
+        print("Player: " + str(player_points) + " : Computer: " + str(computer_points))
+    
+    elif menu_choice == "5": 
+      for result in all_results: 
+        print(result)
+    
+    elif menu_choice == "0":
+        break
+    
